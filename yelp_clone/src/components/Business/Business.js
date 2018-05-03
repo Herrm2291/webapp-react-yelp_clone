@@ -3,15 +3,15 @@ import './Business.css';
 
 /* Sample hard-coded single business listing object which will later be dynamically updated using the Yelp API */
 const business = {
-  imageSrc: 'https://pbs.twimg.com/media/CqEl8kKXgAAYBuQ.png',
+  imageSrc: 'https://thumbs.gfycat.com/DrearyNimbleIchthyosaurs-size_restricted.gif',
   name: 'Pizza the Hutt',
   address: '1234 Princess Vespa Way',
   city: 'Dark Helmet',
   state: 'OH',
   zipCode: '12345',
-  category: 'Space',
-  rating: 4.9,
-  reviewCount: 99
+  category: 'ITALIAN',
+  rating: 5.0,
+  reviewCount: 123456
 };
 
 /* <Business /> component which references the above sample 'business' object to represent formatting and style of a business (restaurant) within the app */
@@ -20,7 +20,7 @@ class Business extends React.Component {
     return (
       <div className="Business">
         <div className="image-container">
-          <img src={business.imgSrc} alt='Thin crust pizza with pepperoni, green peppers, onions and mushrooms' />
+          <img src={business.imageSrc} alt='Pizza the Hutt from the movie Spaceballs' />
         </div>
         <h2>{business.name}</h2>
         <div className="Business-information">
@@ -31,8 +31,8 @@ class Business extends React.Component {
           </div>
           <div className="Business-reviews">
             <h3>{business.category}</h3>
-            <h3 className="rating">{business.rating}</h3>
-            <p>{business.reviewCount}</p>
+            <h3 className="rating">{business.rating} stars</h3>
+            <p>{business.reviewCount} Reviews</p>
           </div>
         </div>
       </div>
