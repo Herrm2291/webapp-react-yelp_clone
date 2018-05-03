@@ -1,0 +1,10 @@
+My explanation of this code is as follows:
+
+  renderSortByOptions() {
+    return Object.keys(sortByOptions).map(sortByOption => {
+      let sortByOptionValue = sortByOptions[sortByOption];
+      return <li key={sortByOptionValue}>{sortByOption}</li>;
+    });
+  }
+
+returnSortByOption is a function that does the following: Takes Object.keys and passes in the sortByOptions argument which is the variable I created above, then uses the .map function to iterate through the keys. A new variable sortByOptionValue is created which stores each of the sort options. Those sort options are then returned as list items, each with a key equal to the variable sortByOptionValue and that contains the sortByOption.

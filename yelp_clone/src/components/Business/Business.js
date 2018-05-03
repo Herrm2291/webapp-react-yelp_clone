@@ -1,7 +1,8 @@
 import React from 'react';
 import './Business.css';
 
-business {
+/* Sample hard-coded single business listing object which will later be dynamically updated using the Yelp API */
+const business = {
   imageSrc: 'https://pbs.twimg.com/media/CqEl8kKXgAAYBuQ.png',
   name: 'Pizza the Hutt',
   address: '1234 Princess Vespa Way',
@@ -13,7 +14,8 @@ business {
   reviewCount: 99
 };
 
-class Business extends React.Component{
+/* <Business /> component which references the above sample 'business' object to represent formatting and style of a business (restaurant) within the app */
+class Business extends React.Component {
   render() {
     return (
       <div className="Business">
