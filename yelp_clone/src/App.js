@@ -27,11 +27,16 @@ const businesses = [
 ];
 
 class App extends React.Component {
+  /* simulates what a search might look like after the Yelp API is added */
+  searchYelp(term, location, sortBy) {
+    console.log("Searching Yelp with {term}, {location}, {sortBy}");
+  }
+
   render() {
     return (
       <div className="App">
         <h1>Yelp...sort of</h1>
-          <SearchBar />
+          <SearchBar searchYelp={this.searchYelp}/>
           <BusinessList businesses={businesses} />
       </div>
     );
