@@ -28,11 +28,27 @@ class SearchBar extends React.Component {
     }
   }
 
+  /* sets the state of a sorting option */
+  handleSortByChange(sortByOption) {
+    this.setState({sortBy: sortByOption});
+  }
+
+  /* sets the state of a term(businesses) option */
+  handleTermChange(e) {
+    this.setState({});
+  }
+
+  /* sets the state of a location(location to search in) option */
+  handleLocationChange(e) {
+    this.setState({});
+  }
+
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
       let sortByOptionValue = sortByOptions[sortByOption];
-      return <li key={sortByOptionValue}>{sortByOption}</li>;
+      return <li key={sortByOptionValue} className={this.getSortByClass(sortByOptionValue)} onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
+      {sortByOption}</li>;
     });
   }
 
