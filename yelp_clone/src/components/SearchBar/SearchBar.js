@@ -13,10 +13,19 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      term: '', // refers to the search term located in the search input
-      location: '', // refers to the location to search near from the location input
-      sortBy: 'best_match' // represents the selected sorting option to use
+      term: '', /* refers to the search term located in the search input */
+      location: '', /* refers to the location to search near from the location input */
+      sortBy: 'best_match' /* represents the selected sorting option to use */
     };
+  }
+
+  /* returns the current CSS class of sort options, returning whether or not each one should be styled as if it has been selected */
+  getSortByClass(sortByOption) {
+    if (this.state.sortBy === sortByOption) {
+      return 'active';
+    } else {
+      return '';
+    }
   }
 
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
