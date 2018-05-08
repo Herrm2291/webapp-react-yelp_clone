@@ -29,7 +29,7 @@ const businesses = [
 class App extends React.Component {
   /* simulates what a search might look like after the Yelp API is added */
   searchYelp(term, location, sortBy) {
-    console.log("Searching Yelp with {term}, {location}, {sortBy}");
+    console.log(`Searching Yelp with ${term}, ${location}, ${sortBy}`);
   }
 
   render() {

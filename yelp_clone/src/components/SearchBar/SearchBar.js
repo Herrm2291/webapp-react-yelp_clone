@@ -48,7 +48,7 @@ class SearchBar extends React.Component {
 
   /* executes the searchYelp method when the "Let's Go" button is clicked */
   handleSearch(event) {
-    this.props.searchYelp(this.term, this.location, this.sortBy);
+    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
     event.preventDefault();
   }
 
