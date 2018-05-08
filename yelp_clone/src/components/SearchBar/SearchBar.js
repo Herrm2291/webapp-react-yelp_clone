@@ -17,6 +17,8 @@ class SearchBar extends React.Component {
       location: '', /* refers to the location to search near from the location input */
       sortBy: 'best_match' /* represents the selected sorting option to use */
     };
+    this.handleTermChange = this.handleTermChange.bind(this);
+    this.handleLocationChange = this.handleLocationChange.bind(this);
   }
 
   /* returns the current CSS class of sort options, returning whether or not each one should be styled as if it has been selected */
@@ -34,13 +36,13 @@ class SearchBar extends React.Component {
   }
 
   /* sets the state of a term(businesses) option */
-  handleTermChange(e) {
-    this.setState({});
+  handleTermChange(event) {
+    this.setState({term: event.target.value});
   }
 
   /* sets the state of a location(location to search in) option */
-  handleLocationChange(e) {
-    this.setState({});
+  handleLocationChange(event) {
+    this.setState({location: event.target.value});
   }
 
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
@@ -61,8 +63,8 @@ class SearchBar extends React.Component {
           </ul>
         </div>
         <div className="SearchBar-fields">
-          <input placeholder="Search Businesses" />
-          <input placeholder="Where?" />
+          <input placeholder="Search Businesses" onChange={this.handleTermChange} />
+          <input placeholder="Where?" onChange={this.handleLocationChange} />
         </div>
         <div className="SearchBar-submit">
           <a>Let's Go</a>
