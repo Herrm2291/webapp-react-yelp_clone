@@ -8,8 +8,17 @@ const sortByOptions = {
   'Most Reviewed': 'review_count'
 }
 
-/* The <SearchBar /> component below is part of the structure needed to communicate with the Yelp API (which will be implemented later) */
+/* the <SearchBar /> component below is part of the structure needed to communicate with the Yelp API (which will be implemented later) */
 class SearchBar extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      term: '', // refers to the search term located in the search input
+      location: '', // refers to the location to search near from the location input
+      sortBy: 'best_match' // represents the selected sorting option to use
+    };
+  }
+
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
   renderSortByOptions() {
     return Object.keys(sortByOptions).map(sortByOption => {
