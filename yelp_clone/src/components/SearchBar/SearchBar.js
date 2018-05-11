@@ -13,7 +13,6 @@ class SearchBar extends React.Component {
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
-    this.handleSortByChange = this.handleSortByChange.bind(this);
     /* values are from the /business/search endpoint 'sort-by' parameters as outlined by Yelp's search API documentation:  https://www.yelp.com/developers/documentation/v3/business_search */
     this.sortByOptions = {
       'Best Match': 'best_match',
@@ -32,8 +31,9 @@ class SearchBar extends React.Component {
   }
 
   /* sets the state of a sorting option */
-  handleSortByChange(sortByOption) {
+  handleSortByChange(sortByOption, event) {
     this.setState({sortBy: sortByOption});
+    this.handleSearch(event);
   }
 
   /* sets the state of a term(businesses) option */
@@ -56,11 +56,8 @@ class SearchBar extends React.Component {
   renderSortByOptions() {
     return Object.keys(this.sortByOptions).map(sortByOption => {
       let sortByOptionValue = this.sortByOptions[sortByOption];
-      return (<li className={this.getSortByClass(sortByOptionValue)}
-                  key={sortByOptionValue}
-                  onClick={this.handleSortByChange}>
-                {sortByOption}
-             </li>);
+      return <li key={sortByOptionValue} className={this.getSortByClass(sortByOptionValue)} onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
+      {sortByOption}</li>;
     });
   }
 
