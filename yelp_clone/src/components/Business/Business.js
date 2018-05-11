@@ -1,7 +1,7 @@
 import React from 'react';
 import './Business.css';
 
-/* <Business /> component which references the sample 'business' object in App.js to represent formatting and style of a business (restaurant) within the app */
+/* <Business /> component to represent formatting and style of a business (restaurant) within the web app */
 class Business extends React.Component {
   render() {
     return (

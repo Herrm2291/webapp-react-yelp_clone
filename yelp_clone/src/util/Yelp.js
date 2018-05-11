@@ -2,7 +2,7 @@ const apiKey = 'qXcdWEUReAibH1ke59f53-c4FiZhWhQuaYAgs-KM-59FzVIKDw2cNDn6WfMl8yrj
 
 const Yelp = {
 /* method to return a promise that will ultimately resolve to the list of businesses */
-search(term, location, sortBy) {
+  search(term, location, sortBy) {
   /* CORS (cross-origin resource sharing) bypass - https://cors-anywhere.herokuapp.com/...*/
   return fetch(`https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=${term}&location=${location}&sort_by=${sortBy}`, {
     headers: {
@@ -10,20 +10,20 @@ search(term, location, sortBy) {
     }
   }).then(response => {
     return response.json();
-  }).then(jsonResponse => {
-    if (jsonResponse.businesses) {
-      return jsonResponse.businesses.map(business => ({
-        id: business.id,
-        imageSrc: business.image_url,
-        name: business.name,
-        address: business.location.address1,
-        city: business.location.city,
-        state: business.location.state,
-        zipCode: business.location.zip_code,
-        category: business.title,
-        rating: business.rating,
-        reviewCount:business.review_count
-      }));
+    }).then(jsonResponse => {
+      if (jsonResponse.businesses) {
+        return jsonResponse.businesses.map(business => ({
+          id: business.id,
+          imageSrc: business.image_url,
+          name: business.name,
+          address: business.location.address1,
+          city: business.location.city,
+          state: business.location.state,
+          zipCode: business.location.zip_code,
+          category: business.categories[0].title,
+          rating: business.rating,
+          reviewCount:business.review_count
+        }));
       }
     });
   }

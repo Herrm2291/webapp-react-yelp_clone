@@ -35,7 +35,7 @@ class App extends React.Component {
     };
     this.searchYelp = this.searchYelp.bind(this);
   }
-  /* simulates what a search might look like after the Yelp API is added */
+  
   searchYelp(term, location, sortBy) {
     Yelp.search(term, location, sortBy).then(businesses => {
       this.setState({businesses: businesses})
