@@ -1,13 +1,6 @@
 import React from 'react';
 import './SearchBar.css';
 
-/* values are from the /business/search endpoint 'sort-by' parameters as outlined by Yelp's search API documentation:  https://www.yelp.com/developers/documentation/v3/business_search */
-const sortByOptions = {
-  'Best Match': 'best_match',
-  'Highest Rated': 'rating',
-  'Most Reviewed': 'review_count'
-}
-
 /* the <SearchBar /> component below is part of the structure needed to communicate with the Yelp API */
 class SearchBar extends React.Component {
   constructor(props) {
@@ -20,6 +13,12 @@ class SearchBar extends React.Component {
     this.handleTermChange = this.handleTermChange.bind(this);
     this.handleLocationChange = this.handleLocationChange.bind(this);
     this.handleSearch = this.handleSearch.bind(this);
+    /* values are from the /business/search endpoint 'sort-by' parameters as outlined by Yelp's search API documentation:  https://www.yelp.com/developers/documentation/v3/business_search */
+    this.sortByOptions = {
+      'Best Match': 'best_match',
+      'Highest Rated': 'rating',
+      'Most Reviewed': 'review_count'
+    };
   }
 
   /* returns the current CSS class of sort options, returning whether or not each one should be styled as if it has been selected */
@@ -55,8 +54,8 @@ class SearchBar extends React.Component {
 
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
   renderSortByOptions() {
-    return Object.keys(sortByOptions).map(sortByOption => {
-      let sortByOptionValue = sortByOptions[sortByOption];
+    return Object.keys(this.sortByOptions).map(sortByOption => {
+      let sortByOptionValue = this.sortByOptions[sortByOption];
       return <li key={sortByOptionValue} className={this.getSortByClass(sortByOptionValue)} onClick={this.handleSortByChange.bind(this, sortByOptionValue)}>
       {sortByOption}</li>;
     });
