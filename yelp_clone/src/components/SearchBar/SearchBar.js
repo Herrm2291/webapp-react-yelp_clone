@@ -35,7 +35,7 @@ class SearchBar extends React.Component {
     console.log(sortByOption);
     console.log(event);
     this.setState({sortBy: sortByOption});
-    this.handleSearch(event);
+    this.handleSearch(event, sortByOption);
   }
 
   /* sets the state of a term(businesses) option */
@@ -49,9 +49,14 @@ class SearchBar extends React.Component {
   }
 
   /* executes the searchYelp method when the "Let's Go" button is clicked */
-  handleSearch(event) {
-    this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
-    event.preventDefault();
+  handleSearch(event, sortByOption) {
+    if(!sortByOption) {
+      this.props.searchYelp(this.state.term, this.state.location, this.state.sortBy);
+      event.preventDefault();
+    } else {
+      this.props.searchYelp(this.state.term, this.state.location, sortByOption);
+      event.preventDefault();
+    }
   }
 
   /* renderSortByOptions is used to dynamically create the list items needed to display the sort options */
